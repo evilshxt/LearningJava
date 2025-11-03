@@ -35,16 +35,16 @@ class LearningJavaPluginSystem {
             if (!section || !section.id) return ''; // Skip invalid sections
 
             return `
-            <li class="mb-4">
-                <div class="flex items-center py-2 px-4 rounded-lg hover:bg-white hover:bg-opacity-20 transition duration-200 cursor-pointer section-toggle" data-section="${section.id}">
-                    <i class="fas ${section.icon} mr-3"></i>
-                    <span class="flex-1">${section.title}</span>
-                    <i class="fas fa-chevron-down transition-transform duration-200"></i>
+            <li class="mb-3">
+                <div class="flex items-center py-3 px-4 rounded-xl hover:bg-white hover:bg-opacity-20 transition-all duration-200 cursor-pointer section-toggle nav-item" data-section="${section.id}">
+                    <i class="fas ${section.icon} mr-3 text-lg"></i>
+                    <span class="flex-1 font-medium">${section.title}</span>
+                    <i class="fas fa-chevron-down transition-transform duration-200 text-sm"></i>
                 </div>
-                <ul class="ml-6 mt-2 space-y-1 hidden subsection-list" id="subsections-${section.id}">
+                <ul class="ml-8 mt-2 space-y-1 hidden subsection-list" id="subsections-${section.id}">
                     ${section.subsections ? section.subsections.map(sub => `
                         <li>
-                            <a href="#${sub.anchor}" class="block py-1 px-3 rounded text-sm hover:bg-white hover:bg-opacity-10 transition duration-200">
+                            <a href="#${sub.anchor}" class="block py-2 px-3 rounded-lg text-sm text-blue-100 hover:bg-white hover:bg-opacity-10 hover:text-white transition-all duration-200 ml-4 border-l border-blue-300 border-opacity-30">
                                 ${sub.title}
                             </a>
                         </li>
