@@ -21,7 +21,7 @@ class LearningJavaPluginSystem {
 
     // Load all section plugins
     async loadAllSections() {
-        const sectionFolders = ['introduction', 'variables', 'data-types'];
+        const sectionFolders = ['introduction', 'variables', 'data-types', 'control-structures', 'methods', 'arrays', 'oop-basics', 'exception-handling', 'input-output', 'collections'];
         for (const folder of sectionFolders) {
             await this.loadSectionPlugin(folder);
         }

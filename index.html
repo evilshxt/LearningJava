@@ -20,7 +20,7 @@
         .sidebar.closed {
             transform: translateX(-100%);
         }
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
             .sidebar {
                 transform: translateX(0);
             }
@@ -78,7 +78,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-18">
                 <div class="flex items-center">
-                    <button id="sidebar-toggle" class="md:hidden text-blue-600 mr-4 p-2 rounded-lg hover:bg-blue-50 transition-colors"><i class="fas fa-bars text-xl"></i></button>
+                    <button id="sidebar-toggle" class="text-blue-600 mr-4 p-2 rounded-lg hover:bg-blue-50 transition-colors"><i class="fas fa-bars text-xl"></i></button>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center mr-3">
                             <i class="fas fa-code text-white text-lg"></i>
@@ -102,7 +102,7 @@
     </nav>
 
     <!-- Sidebar -->
-    <div id="sidebar" class="sidebar fixed inset-y-0 left-0 z-30 w-64 gradient-bg text-white overflow-y-auto closed md:open pt-20">
+    <div id="sidebar" class="sidebar fixed inset-y-0 left-0 z-30 w-64 gradient-bg text-white overflow-y-auto closed pt-20">
         <div class="p-6">
             <div class="mb-8">
                 <h2 class="text-lg font-semibold mb-2">Navigation</h2>
@@ -115,7 +115,7 @@
     </div>
 
     <!-- Main Content -->
-    <div class="md:ml-64 pt-24 p-6 min-h-screen">
+    <div id="main-content" class="pt-24 p-6 min-h-screen">
 
         <!-- Dynamic Sections Container -->
         <div id="sections-container"></div>
@@ -139,9 +139,15 @@
         // Sidebar toggle
         const sidebar = document.getElementById('sidebar');
         const toggle = document.getElementById('sidebar-toggle');
+        const mainContent = document.getElementById('main-content');
         toggle.addEventListener('click', () => {
             sidebar.classList.toggle('open');
             sidebar.classList.toggle('closed');
+            if (sidebar.classList.contains('open')) {
+                mainContent.classList.add('lg:ml-64');
+            } else {
+                mainContent.classList.remove('lg:ml-64');
+            }
         });
 
         // Load sections dynamically
@@ -174,8 +180,8 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
-                // Close sidebar on mobile after click
-                if (window.innerWidth < 768) {
+                // Close sidebar on mobile/tablet after click
+                if (window.innerWidth < 1024) {
                     sidebar.classList.remove('open');
                     sidebar.classList.add('closed');
                 }
